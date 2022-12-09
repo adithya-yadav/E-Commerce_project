@@ -8,14 +8,16 @@ const Cart = (props) => {
   return (
     <Fragment>
       <div
-        className="bg-white border-3px position-fixed mt-5 "
+        className="bg-white border-3px position-fixed mt-3"
         style={{
           top: "50px",
-          height: "95%",
+          height: "65%",
+          width:"60%",
           right: "0",
           zIndex: "999",
           margin:"10px",
-          padding:"20px"
+          padding:"20px",
+          overflow:"auto"
         }}
       >
         <div className=" mg-2 d-flex justify-content-end">

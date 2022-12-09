@@ -20,6 +20,7 @@ function Items() {
   return (
     <Fragment>
       <ItemHeaders/>
+      <h2 className="d-flex justify-content-center" >Colours</h2>
       <Container className="mt-3" style={{ zIndex: "-1" }}>
         <Row className="" style={{ zIndex: "-1" }}>
           {itemsList}

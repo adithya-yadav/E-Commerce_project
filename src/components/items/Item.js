@@ -6,7 +6,7 @@ import ContextApi from "../store/ContextApi";
 
 function Item(props) {
   const cartCtx = useContext(ContextApi);
-
+  
   function onAddToCardHandler() {
     cartCtx.addItem({
       id: props.title,

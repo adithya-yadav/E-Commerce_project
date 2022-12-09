@@ -13,12 +13,12 @@ function App() {
  }
  
   return (
-      <ContextProvider>
+    <>
+    <ContextProvider>
       {showCart && <Cart onClick={closeCart}/>}
-
         <Nav onClick={openCart}/>
-        
     </ContextProvider>
+    </>
   );
 }
 
