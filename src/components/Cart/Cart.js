@@ -1,16 +1,21 @@
-import { Button, Container, Table } from "react-bootstrap";
-import productsArr from "../Nav/DummyData";
+import { Fragment, useContext } from "react";
+import { Button , Table } from "react-bootstrap";
+
+import ContextApi from "../store/ContextApi";
 
 const Cart = (props) => {
+  const cartCtx = useContext(ContextApi)
   return (
-    <>
-      <Container
-        className="bg-white border-3px position-fixed d-block mt-5 "
+    <Fragment>
+      <div
+        className="bg-white border-3px position-fixed mt-5 "
         style={{
           top: "50px",
           height: "95%",
           right: "0",
           zIndex: "999",
+          margin:"10px",
+          padding:"20px"
         }}
       >
         <div className=" mg-2 d-flex justify-content-end">
@@ -27,7 +32,7 @@ const Cart = (props) => {
               </tr>
             </thead>
             <tbody>
-              {productsArr.map((item) => {
+              {cartCtx.items.map((item) => {
                 return (
                   <tr key={item.title}>
                     <td>
@@ -37,8 +42,8 @@ const Cart = (props) => {
                     <td>{item.price}</td>
                     <td>
                       <input
-                        value="1"
-                        className="col-1 me-3 border-info justify-content-center"
+                        defaultValue="1"
+                        className="col-1 me-3 border-info align-items-center"
                       />
                       <Button variant="danger">Remove</Button>
                     </td>
@@ -57,8 +62,8 @@ const Cart = (props) => {
             Purchase
           </Button>
         </div>
-      </Container>
-    </>
+      </div>
+    </Fragment>
   );
 };
 

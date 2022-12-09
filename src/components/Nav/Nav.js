@@ -1,12 +1,13 @@
-import Card from "react-bootstrap/Card";
-import productsArr from "./DummyData";
-import { Col, Container, Row, Navbar, Button } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
 import NavButton from "./NavButton";
+import { Fragment } from "react";
+import Items from "../items/items";
+
 
 function Nav(props) {
   return (
-    <>
-      <Navbar bg="dark" variant="dark" className="">
+    <Fragment className="h-25">
+      <Navbar bg="dark" variant="dark">
         <Container className="justify-content-center">
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Brand href="/">Store</Navbar.Brand>
@@ -14,28 +15,8 @@ function Nav(props) {
         </Container>
         <NavButton onClick={props.onClick} />
       </Navbar>
-      <Container className="mt-3 ">
-        <Row className="">
-          {productsArr.map((item) => {
-            return (
-              <Col className="cal-3" key={item.title}>
-                <Card
-                  style={{ width: "18rem" }}
-                  className="m-3 mx-auto"
-                >
-                  <Card.Img variant="top" src={item.imageUrl} />
-                  <Card.Body>
-                    <Card.Title>{item.title}</Card.Title>
-                    <Card.Text>{item.price}</Card.Text>
-                    <Button variant="info">Add to Cart</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
-    </>
+        <Items className="mt-10"/>
+    </Fragment>
   );
 }
 

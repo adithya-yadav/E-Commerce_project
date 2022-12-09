@@ -1,7 +1,7 @@
 function CartList(){
-    return (
-        console.log("helo")
-    )
+    // return (
+        
+    // )
 }
 
 export default CartList

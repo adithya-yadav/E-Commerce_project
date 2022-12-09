@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import ReactDOM from 'react-dom'
 const ModelOverlay = (props) => {
     return (
@@ -9,11 +10,11 @@ const ModelOverlay = (props) => {
   
 function Modal (){
     return (
-        <>
+        <Fragment>
         {ReactDOM.createPortal(
         <ModelOverlay>{props.children}</ModelOverlay>,
         portalElement
       )}
-        </>
+        </Fragment>
     )
 }
