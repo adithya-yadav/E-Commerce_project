@@ -5,6 +5,7 @@ import Items from "../items/items";
 import NavHeaders from "./NavHeaders";
 import About from "./Pages/About";
 import { Route } from "react-router-dom";
+import Home from "./Pages/Home";
 
 function Nav(props) {
   return (
@@ -26,7 +27,9 @@ function Nav(props) {
         </Container>
         <NavButton onClick={props.onClick} />
       </Navbar>
-      <Route path="/Home"></Route>
+      <Route path="/Home">
+        <Home/>
+      </Route>
       <Route path="/Store">
         <Items className="mt-10" />
       </Route>
