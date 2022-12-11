@@ -6,6 +6,7 @@ import NavHeaders from "./NavHeaders";
 import About from "./Pages/About";
 import { Route } from "react-router-dom";
 import Home from "./Pages/Home";
+import ContactUs from "./Pages/ContactUs";
 
 function Nav(props) {
   return (
@@ -28,7 +29,7 @@ function Nav(props) {
         <NavButton onClick={props.onClick} />
       </Navbar>
       <Route path="/Home">
-        <Home/>
+        <Home />
       </Route>
       <Route path="/Store">
         <Items className="mt-10" />
@@ -36,7 +37,11 @@ function Nav(props) {
       <Route path="/About">
         <About />
       </Route>
-    </Fragment> 
+      <Route path="/Contact">
+        <div>hello</div>
+      <ContactUs />
+      </Route>
+    </Fragment>
   );
 }
 
