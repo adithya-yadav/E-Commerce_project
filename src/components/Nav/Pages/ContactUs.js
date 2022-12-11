@@ -23,6 +23,9 @@ import "./Contact.css";
             "content-type":"application/json"
         }
        })
+       nameRef.current.value="";
+       emailRef.current.value="";
+       phoneRef.current.value="";
        console.log(response)
 
     }
@@ -49,7 +52,7 @@ import "./Contact.css";
           <label htmlFor="email">Email Id :</label>
           <input type="text" ref={emailRef} id="email" placeholder="enter your email" />
           <label htmlFor="phone">phone No :</label>
-          <input type="text" ref={phoneRef} id="phone" placeholder="enter your phone number" />
+          <input type="number" ref={phoneRef} id="phone" placeholder="enter your phone number" />
           <button className="button" type="submit">Submit</button>
         </Form>
       </Container>

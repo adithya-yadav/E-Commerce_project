@@ -4,9 +4,10 @@ import { Fragment } from "react";
 import Items from "../items/items";
 import NavHeaders from "./NavHeaders";
 import About from "./Pages/About";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "./Pages/Home";
 import ContactUs from "./Pages/ContactUs";
+import Products from "./Pages/Product";
 
 function Nav(props) {
   return (
@@ -28,19 +29,23 @@ function Nav(props) {
         </Container>
         <NavButton onClick={props.onClick} />
       </Navbar>
-      <Route path="/Home">
-        <Home />
-      </Route>
-      <Route path="/Store">
-        <Items className="mt-10" />
-      </Route>
-      <Route path="/About">
-        <About />
-      </Route>
-      <Route path="/Contact">
-        <div>hello</div>
-      <ContactUs />
-      </Route>
+      <Switch>
+        <Route path="/Home">
+          <Home />
+        </Route>
+        <Route path="/Store" exact>
+          <Items className="mt-10" />
+        </Route>
+        <Route path="/Products">
+          <Products />
+        </Route>
+        <Route path="/About">
+          <About />
+        </Route>
+        <Route path="/Contact">
+          <ContactUs />
+        </Route>
+      </Switch>
     </Fragment>
   );
 }
