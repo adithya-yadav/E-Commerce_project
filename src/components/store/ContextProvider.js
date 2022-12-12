@@ -2,7 +2,7 @@ import { useState } from "react";
 import ContextApi from "./ContextApi";
 
 const ContextProvider = (props) => {
-  const loginToken = !!localStorage.getItem("token")
+  const loginToken = localStorage.getItem("token")
   const [isLoginToken,setIsLoginToken] = useState(loginToken)
   const [amount, setAmount] = useState(0);
   const [items, setItems] = useState([]);
@@ -27,12 +27,18 @@ const ContextProvider = (props) => {
     localStorage.setItem("token",token)
     setIsLoginToken(true)
   }
+
+  function isLogoutHandler(){
+    localStorage.removeItem("token")
+    setIsLoginToken(false)
+  }
   
   function removeItemFromCardHandler() {}
   const CardCtx = {
     items: items,
     totalAmount: amount,
     isLoginfunc:isLoginHandler,
+    isLogoutfunc:isLogoutHandler,
     isLogin:userIsLogin,
     addItem: addItemToCardHandler,
     removeItem: removeItemFromCardHandler,

@@ -4,6 +4,9 @@ import ContextApi from "../store/ContextApi";
 
 function NavHeaders() {
   const ctx = useContext(ContextApi);
+  function logOutHandler(){
+    ctx.isLogoutfunc()
+  }
   return (
     <>
       {ctx.isLogin && (
@@ -20,7 +23,7 @@ function NavHeaders() {
           <NavLink className="text-white text-decoration-none h4" to="/Contact">
             Contact
           </NavLink>
-          <NavLink className="text-white text-decoration-none h4" to="/auth">
+          <NavLink className="text-white text-decoration-none h4" onClick={logOutHandler} to="/auth">
             Logout
           </NavLink>
         </>
