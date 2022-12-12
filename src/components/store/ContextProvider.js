@@ -2,12 +2,16 @@ import { useState } from "react";
 import ContextApi from "./ContextApi";
 
 const ContextProvider = (props) => {
+  const loginToken = !!localStorage.getItem("token")
+  const [isLoginToken,setIsLoginToken] = useState(loginToken)
   const [amount, setAmount] = useState(0);
   const [items, setItems] = useState([]);
   const [message, setMessage] = useState({
     msg:false,
     title:""
   });
+  const userIsLogin = !! isLoginToken
+
   function addItemToCardHandler(item) {
     const updatedItems = [...items, item];
     setItems(updatedItems);
@@ -18,10 +22,18 @@ const ContextProvider = (props) => {
         setMessage({msg:false,title:""})
     },3000)
   }
+
+  function isLoginHandler(token){
+    localStorage.setItem("token",token)
+    setIsLoginToken(true)
+  }
+  
   function removeItemFromCardHandler() {}
   const CardCtx = {
     items: items,
     totalAmount: amount,
+    isLoginfunc:isLoginHandler,
+    isLogin:userIsLogin,
     addItem: addItemToCardHandler,
     removeItem: removeItemFromCardHandler,
   };

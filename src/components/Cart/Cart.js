@@ -38,7 +38,7 @@ const Cart = (props) => {
                 return (
                   <tr key={item.title}>
                     <td>
-                      <img src={item.imageUrl} height="80" alt="img" />
+                      <img src={item.imageUrl} height="80" alt="img" className="rounded-3 me-1" />
                       {item.title}
                     </td>
                     <td>{item.price}</td>

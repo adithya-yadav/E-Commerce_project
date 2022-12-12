@@ -8,6 +8,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./Pages/Home";
 import ContactUs from "./Pages/ContactUs";
 import Products from "./Pages/Product";
+import LoginForm from "../LoginForm.js/LoginPage";
 
 function Nav(props) {
   return (
@@ -44,6 +45,9 @@ function Nav(props) {
         </Route>
         <Route path="/Contact">
           <ContactUs />
+        </Route>
+        <Route path="/auth">
+            <LoginForm/>
         </Route>
       </Switch>
     </Fragment>
