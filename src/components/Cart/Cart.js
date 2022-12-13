@@ -1,18 +1,21 @@
 import { Fragment, useContext } from "react";
 import { Button , Table } from "react-bootstrap";
-
 import ContextApi from "../store/ContextApi";
+import CartList from "./CartList";
 
 const Cart = (props) => {
   const cartCtx = useContext(ContextApi)
+  function purchaseHaldler(){
+    cartCtx.removeItem("purchase")
+  }
   return (
     <Fragment>
       <div
         className="bg-white border-3px position-fixed mt-3"
         style={{
           top: "50px",
-          height: "65%",
-          width:"60%",
+          height: "90%",
+          width:"40%",
           right: "0",
           zIndex: "999",
           margin:"10px",
@@ -24,7 +27,7 @@ const Cart = (props) => {
           <Button variant="light"  onClick={props.onClick}>X</Button>
         </div>
         <h1 className=" mg-2 d-flex justify-content-center">Cart</h1>
-        <div className=" mg-2 d-flex justify-content-center">
+        <div className=" mg-2 ms-5 d-flex justify-content-center">
           <Table responsive>
             <thead className="h3">
               <tr>
@@ -33,34 +36,15 @@ const Cart = (props) => {
                 <th>QUANTITY</th>
               </tr>
             </thead>
-            <tbody>
-              {cartCtx.items.map((item) => {
-                return (
-                  <tr key={item.title}>
-                    <td>
-                      <img src={item.imageUrl} height="80" alt="img" className="rounded-3 me-1" />
-                      {item.title}
-                    </td>
-                    <td>{item.price}</td>
-                    <td>
-                      <input
-                        defaultValue="1"
-                        className="col-1 me-3 border-info align-items-center"
-                      />
-                      <Button variant="danger">Remove</Button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
+            <CartList/>
           </Table>
         </div>
-        <div className="d-flex justify-content-end d-flex align-items-end">
+        <div className="d-flex justify-content-end d-flex align-items-end me-5">
           <h3 className="me-3 d-flex align-items-end">Total</h3>
-          <span className="mb-2">$22.98</span>
+          <span className="mb-2">$ {cartCtx.totalAmount}</span>
         </div>
         <div className="d-flex justify-content-center">
-          <Button variant="info">
+          <Button onClick={purchaseHaldler} variant="info">
             Purchase
           </Button>
         </div>

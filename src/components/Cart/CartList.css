@@ -1,0 +1,8 @@
+.inputSpinButton[type=number]::-webkit-inner-spin-button, 
+.inputSpinButton[type=number]::-webkit-outer-spin-button { 
+  appearance: none;
+}
+
+.inputSpinButton[type=number] {
+    appearance: textfield;
+  }

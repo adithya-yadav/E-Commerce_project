@@ -15,7 +15,7 @@ function NavButton(props) {
       >
         <div className="text-white">Cart</div>
       </Button>
-      <p className="text-info mt-1 mb-5 me-3 ms-0 h5">{CardCtx.totalAmount}</p>
+      <p className="text-info mt-1 mb-5 me-3 ms-0 h5">{CardCtx.items.length}</p>
     </Fragment>
   );
 }

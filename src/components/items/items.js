@@ -6,10 +6,10 @@ import Item from "./Item";
 import ItemHeaders from "./ItemHeaders";
 
 function Items() {
-  const itemsList = productsArr.map((item) => {
+  const itemsList = productsArr.map((item,ind) => {
     return (
       <Item
-        key={item}
+        key={ind}
         title={item.title}
         imageUrl={item.imageUrl}
         price={item.price}

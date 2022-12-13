@@ -26,7 +26,7 @@ function Item(props) {
           <Card.Title name="title" className="d-flex justify-content-center ">
             {props.title}
           </Card.Title>
-          <Link to="/Products">
+          <Link to="/Store/:Products">
             <Card.Img variant="top" src={props.imageUrl} />
           </Link>
           <Card.Body className="d-flex justify-content-between">

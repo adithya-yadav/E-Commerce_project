@@ -30,7 +30,7 @@ function Nav(props) {
         <Container className="d-flex justify-content-around ">
           <NavHeaders />
         </Container>
-        <NavButton onClick={props.onClick} />
+       {ctx.isLogin && <NavButton onClick={props.onClick} />}
       </Navbar>
       <Switch>
         {ctx.isLogin && (
@@ -41,7 +41,7 @@ function Nav(props) {
             <Route path="/Store" exact>
               <Items className="mt-10" />
             </Route>
-            <Route path="/Products">
+            <Route path="/Store/:Products">
               <Products />
             </Route>
             <Route path="/About">

@@ -1,27 +1,22 @@
 import { Container } from "react-bootstrap";
-import fp2 from "../../images/fp2.png";
-import fp3 from "../../images/fp3.png";
-import fp1 from "../../images/fp1.png";
-import fp4 from "../../images/fp4.png";
 import "./Product.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import productsArr from "../../items/DummyData";
+import ContextApi from "../../store/ContextApi";
 
 function Products() {
-  const [img, setimg] = useState(fp1);
-
-  function fp1Handler() {
-    setimg(fp1);
+  const cartCtx = useContext(ContextApi)
+  const [img, setimg] = useState(productsArr[0].imageUrl);
+  const [addCart,setAddCart] = useState(productsArr[0])
+  function addToCartHandler(){
+    cartCtx.addItem({
+      id: addCart.title,
+      title: addCart.title,
+      imageUrl: addCart.imageUrl,
+      amount: 1,
+      price: addCart.price,
+    });
   }
-  function fp2Handler() {
-    setimg(fp2);
-  }
-  function fp3Handler() {
-    setimg(fp3);
-  }
-  function fp4Handler() {
-    setimg(fp4);
-  }
-
   return (
     <>
       <Container
@@ -40,18 +35,15 @@ function Products() {
             rowGap: "10px",
           }}
         >
-          <button onClick={fp1Handler}>
-            <img alt="img" src={fp1} height="150px" />
-          </button>
-          <button onClick={fp2Handler}>
-            <img alt="img" src={fp2} height="150px" />
-          </button>
-          <button onClick={fp3Handler}>
-            <img alt="img" src={fp3} height="150px" />
-          </button>
-          <button onClick={fp4Handler}>
-            <img alt="img" src={fp4} height="150px" />
-          </button>
+          {productsArr.map((item , ind) => {
+            function itemShowHandler(){
+              setimg(item.imageUrl)
+              setAddCart(item)
+            }
+           return <button key={ind} onClick={itemShowHandler}>
+              <img alt="img" src={item.imageUrl} height="150px" />
+            </button>;
+          })}
         </div>
         <div
           className="d-flex m-3"
@@ -70,6 +62,7 @@ function Products() {
           />
           <div className="d-flex justify-content-around mt-5 border-dark">
             <button
+              onClick={addToCartHandler}
               className="btn btn-warning btn-lg"
               style={{ height: "7vh", width: "45%" }}
             >
