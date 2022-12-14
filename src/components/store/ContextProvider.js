@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import ContextApi from "./ContextApi";
 import axios from "axios";
 
-// const useMountEffect = (fun) => useEffect(fun, [])
-
 function ContextProvider(props) {
   const [items, setItems] = useState([]);
   const loginToken = localStorage.getItem("token");
+  const [userName,setUserName] = useState(loginToken?loginToken.replace("@","").replace(".",""):null)
   const [isLoginToken, setIsLoginToken] = useState(loginToken);
   const [amount, setAmount] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -14,18 +13,13 @@ function ContextProvider(props) {
     msg: false,
     title: "",
   });
-  let userName = "";
-  for (let n of isLoginToken) {
-    if (n === "@") break;
-    else userName += n;
-  }
   useEffect(() => {
     async function getdata() {
-      setLoading(true)
-      if (userName !== undefined) {
+      setLoading(true);
+      if (userName !== null) {
         try {
           const res = await axios.get(
-            `https://crudcrud.com/api/de62383e6a414eb082895ff7ff2a9bd6/${userName}`
+            `https://crudcrud.com/api/e1870280daac42f0ad903f58a43393ef/${userName}`
           );
           let itemarr = [];
           let tempAmount = 0;
@@ -39,19 +33,19 @@ function ContextProvider(props) {
           console.log(err);
         }
       }
-      setLoading(false)
+      setLoading(false);
     }
     getdata();
-  }, []);
+  }, [isLoginToken]);
 
   const userIsLogin = !!isLoginToken;
   async function addItemToCardHandler(item) {
-    setLoading(true)
+    setLoading(true);
     const itemInd = items.findIndex((itm) => item.id === itm.id);
     if (itemInd !== -1) return alert("This item is already added to the cart");
     try {
       const res = await axios.post(
-        `https://crudcrud.com/api/de62383e6a414eb082895ff7ff2a9bd6/${userName}`,
+        `https://crudcrud.com/api/e1870280daac42f0ad903f58a43393ef/${userName}`,
         item
       );
       const updatedItems = [...items, res.data];
@@ -68,10 +62,17 @@ function ContextProvider(props) {
     setTimeout(() => {
       setMessage({ msg: false, title: "" });
     }, 3000);
-    setLoading(false)
+    setLoading(false);
   }
 
   function isLoginHandler(token) {
+    // let tempname = ""
+    // for(let i=0; i<token.length; i++){
+    //   if(token[i]==="@")break;
+    //   else tempname+=token[i]
+    // }
+    // setUserName(tempname)
+    setUserName(token.replace("@","").replace(".",""))
     localStorage.setItem("token", token);
     setIsLoginToken(true);
   }
@@ -82,7 +83,7 @@ function ContextProvider(props) {
   }
 
   async function removeItemFromCardHandler(id) {
-    setLoading(true)
+    setLoading(true);
     if (id === "purchase" && items.length === 0)
       return alert(
         "You have Nothing in Cart , Add some products to purchase !"
@@ -94,13 +95,13 @@ function ContextProvider(props) {
       return;
     }
     await axios.delete(
-      `https://crudcrud.com/api/de62383e6a414eb082895ff7ff2a9bd6/${userName}/${id}`
+      `https://crudcrud.com/api/e1870280daac42f0ad903f58a43393ef/${userName}/${id}`
     );
     const itemInd = items.findIndex((itm) => id === itm._id);
     const updatedAmount = amount - items[itemInd].price;
     setAmount(updatedAmount);
     items.splice(id, 1);
-    setLoading(false)
+    setLoading(false);
   }
   const CardCtx = {
     items: items,
@@ -135,27 +136,31 @@ function ContextProvider(props) {
           </h6>
         </div>
       )}
-      {loading && <div style={{
-        position:"fixed",
-        top:"0",
-        height:"100vh",
-        width:"100vw",
-        backgroundColor:"black",
-        opacity: "0.6",
-        zIndex:"99999",
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center"
-      }}>
-        <h2
+      {loading && (
+        <div
           style={{
-            fontWeight: "bold",
-            color:"white"
+            position: "fixed",
+            top: "0",
+            height: "100vh",
+            width: "100vw",
+            backgroundColor: "black",
+            opacity: "0.6",
+            zIndex: "99999",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          Loading... please wait
-        </h2>
-      </div>}
+          <h2
+            style={{
+              fontWeight: "bold",
+              color: "white",
+            }}
+          >
+            Loading... please wait
+          </h2>
+        </div>
+      )}
     </ContextApi.Provider>
   );
 }

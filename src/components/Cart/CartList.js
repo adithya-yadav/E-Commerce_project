@@ -5,6 +5,7 @@ import "./CartList.css"
 
 function CartList(props) {
     const cartCtx = useContext(ContextApi)
+
   return (
     <>
       <tbody>
@@ -13,7 +14,7 @@ function CartList(props) {
             cartCtx.removeItem(item._id)
         }
           return (
-            <tr key={item.title}>
+            <tr key={item._id}>
               <td>
                 <img
                   src={item.imageUrl}
