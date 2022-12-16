@@ -1,44 +1,45 @@
 import { Table } from "react-bootstrap";
+import Footer from "../Footer";
 import ItemHeaders from "../../items/ItemHeaders";
 const DummyList = [
   {
     name: "primary",
     class: "bg-primary text-white",
     col: "light blue",
-    btn: "use primary color",
+    btn: "primary",
   },
   {
     name: "secondary",
     class: "bg-primary text-white",
     col: "light blue",
-    btn: "use secondary color",
+    btn: "secondary",
   },
   {
     name: "success",
     class: "bg-primary text-white",
     col: "light blue",
-    btn: "use success color",
+    btn: "success",
   },
   {
     name: "danger",
     class: "bg-primary text-white",
     col: "light blue",
-    btn: "use danger color",
+    btn: "danger",
   },
   {
     name: "warning",
     class: "bg-primary text-white",
     col: "light blue",
-    btn: "use warning color",
+    btn: "warning",
   },
   {
     name: "info",
     class: "bg-primary text-white",
     col: "light blue",
-    btn: "use info color",
+    btn: "info",
   },
 ];
-function Home() {
+const Home = () => {
   return (
     <>
       <div className=" pb-5 mb-2 bg-secondary mb-5 mt-0 ">
@@ -67,17 +68,26 @@ function Home() {
                 <tr className="h4">
                   <td className={`m-5 mt-0 text-${col.name}`}>{col.name}</td>
                   <td className={`text-secondary`}>ClassName={col.class}</td>
-                  <td>{<span className={`m-2 p-2 border border-dark bg-${col.name}`}></span>}</td>
-                  <td className={`mt-3 mb-3 ms-5 btn btn-${col.name}`}>{col.btn}</td>
+                  <td>
+                    {
+                      <span
+                        className={`m-2 p-2 border border-dark bg-${col.name}`}
+                      ></span>
+                    }
+                  </td>
+                  <td
+                    style={{ width: "90%" }}
+                    className={`mt-3 mb-3 ms-5 border-dark btn btn-${col.name}`}
+                  >
+                    Add {col.btn} Color
+                  </td>
                 </tr>
               );
             })}
           </tbody>
         </div>
       </Table>
-      <footer className="bg-info mt-5 p-5">
-            <div className="text-white h1 ms-5">The Generies</div>
-    </footer>
+      <Footer />
     </>
   );
 }

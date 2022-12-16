@@ -1,33 +1,28 @@
 import { Container } from "react-bootstrap";
+import Footer from "../Footer";
 import ItemHeaders from "../../items/ItemHeaders";
-const fbicons = require("../../images/fb.png");
-const spotifyIcon = require("../../images/spotify.png");
-const youtubeIcon = require("../../images/youtube.png");
+import './About.css'
+import { useHistory } from "react-router-dom";
 
-function About() {
+const About = () => {
+  const history = useHistory()
+  const contactUsHandler = ()=>{
+    history.push("/Contact")
+  }
   return (
     <>
       <ItemHeaders />
-      <h2 className="d-flex justify-content-center">About</h2>
-      <Container className="justify-content-between">
+      <h2 className="d-flex justify-content-center mt-3">About Us</h2>
+      
+      <Container className="justify-content-between mt-5">
         <img
-          className="ms-3 rounded-circle"
-          style={{
-            float: "left",
-            margin: "20px 50px",
-            borderRadius: "50%",
-            width: "200px",
-            height: "200px",
-          }}
-          src="https://prasadyash2411.github.io/ecom-website/img/Album%201.png"
+          className="About_Img ms-3 rounded-circle"
+          src="https://picsum.photos/200"
           alt="img"
         ></img>
+        <button className="btn btn-info p-3 w-50 text-white" onClick={contactUsHandler}>Contact Us</button>
         <p
-          style={{
-            fontSize: "17px",
-            margin: "20px",
-            color: "#777",
-          }}
+        className="loram_content"
         >
           Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
           sorrows, hates no prosecutors will unfold in the enduring of which
@@ -50,22 +45,22 @@ function About() {
           often one of us, however, have any! Moreover, this is often not at
           once take the hardships of the life of harsh condemn, we are accusing
           him? Him whom something large cisterns.
+          blessed sufferings. I never said will unfold in him receives at
+          another time he may please the one that those works, we are less than
+          they, this refused to the pleasures of deleniti? Those are! Will
+          unfold in times of pleasure, this pain will be a right enjoyed by
+          corrupt, are accusing him of all pleasures, and seek his own, or, to
+          the needs of the agony of the choice. We hate the fellow. Lorem ipsum
+          dolor, sit amet consectetur rebates. The distinction, that arise from
+          or to. The greater, therefore, an obstacle to the duties of the debts
+          receives the very great importance to us that these are consequent to
+          that question is answered, which was selected for the fault, it is
+          often one of us, however, have any! Moreover, this is often not at
+          once take the hardships of the life of harsh condemn, we are accusing
+          him? Him whom something large cisterns.
         </p>
       </Container>
-      <footer className="bg-info mt-5 p-4 d-flex justify-content-around">
-        <div className="text-white h1 ms-5">The Generies</div>
-
-          <a href="https://www.youtube.com/">
-            <img src={youtubeIcon} alt="youtube" height="40px" />
-          </a>
-          <a href="https://open.spotify.com/" className="bg-white p-0">
-            <img src={spotifyIcon} alt="spotyfy" height="40px" />
-          </a>
-          <a href="https://www.facebook.com/">
-            <img src={fbicons} alt="facebook" height="40px" />
-          </a>
-          
-      </footer>
+      <Footer/>
     </>
   );
 }

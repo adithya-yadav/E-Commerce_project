@@ -4,13 +4,13 @@ import Nav from "./components/Nav/Nav";
 import ContextProvider from "./components/store/ContextProvider";
 
 
-function App() {
+const App = () => {
   const [showCart,setShowCart]=useState(false)
 
- function openCart(){
+ const openCart = () => {
   setShowCart(true)
  }
- function closeCart(){
+ const closeCart = () => {
   setShowCart(false)
  }
  

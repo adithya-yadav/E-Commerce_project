@@ -1,11 +1,13 @@
 import { useRef } from "react";
 import { Container, Form } from "react-bootstrap";
-import "./Contact.css";
- function ContactUs() {
+import Footer from "../Footer";
+import "./ContactUs.css";
+
+const ContactUs = () => {
     const nameRef = useRef()
     const emailRef = useRef()
     const phoneRef = useRef()
-    async function addDetailsHandler(e){
+    const addDetailsHandler = async(e) => {
         e.preventDefault()
         const name=nameRef.current.value;
         const email=emailRef.current.value;
@@ -37,14 +39,9 @@ import "./Contact.css";
           marginTop: "90px",
         }}
       >
+        <h1 className="contact_us">Contact Us</h1>
         <Form
-          className="d-block align-items-center"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            rowGap: "10px",
-          }}
+          className="form_contactUs d-block align-items-center"
           onSubmit={addDetailsHandler}
         >
           <label htmlFor="name">Name :</label>
@@ -56,6 +53,7 @@ import "./Contact.css";
           <button className="button" type="submit">Submit</button>
         </Form>
       </Container>
+      <Footer/>
     </>
   );
 }

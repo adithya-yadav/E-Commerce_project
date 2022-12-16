@@ -1,7 +1,8 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext } from "react";
 import { Button, Table } from "react-bootstrap";
 import ContextApi from "../store/ContextApi";
 import CartList from "./CartList";
+import './Cart.css';
 
 const Cart = (props) => {
   const cartCtx = useContext(ContextApi);
@@ -14,17 +15,7 @@ const Cart = (props) => {
       {showCart && (
         <Fragment>
           <div
-            className="bg-white border-3px position-fixed mt-3"
-            style={{
-              top: "50px",
-              height: "90%",
-              width: "40%",
-              right: "0",
-              zIndex: "999",
-              margin: "10px",
-              padding: "20px",
-              overflow: "auto",
-            }}
+            className= "cart bg-white border-3px position-fixed mt-5"
           >
             <div className=" mg-2 d-flex justify-content-end">
               <Button variant="light" onClick={props.onClick}>

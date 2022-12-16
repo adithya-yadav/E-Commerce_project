@@ -3,14 +3,14 @@ import {useContext} from "react";
 import { Button } from "react-bootstrap";
 import "./CartList.css"
 
-function CartList(props) {
+const CartList = (props) => {
     const cartCtx = useContext(ContextApi)
 
   return (
     <>
       <tbody>
         {cartCtx.items.map((item) => {
-        function removeItemHandler(){
+        const removeItemHandler = () => {
             cartCtx.removeItem(item._id)
         }
           return (
@@ -30,7 +30,6 @@ function CartList(props) {
                   type="number"
                   defaultValue="1"
                   min="1"
-                  
                   max="5"
                   className="inputSpinButton col-2 me-3 border-info align-items-center"
                 />

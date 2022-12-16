@@ -1,11 +1,10 @@
-
 import productsArr from "./DummyData";
 import { Container, Row } from "react-bootstrap";
 import { Fragment } from "react";
-import Item from "./Item";
+import Item from "./item";
 import ItemHeaders from "./ItemHeaders";
 
-function Items() {
+const Items = () => {
   const itemsList = productsArr.map((item,ind) => {
     return (
       <Item

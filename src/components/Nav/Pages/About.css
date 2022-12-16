@@ -1,0 +1,13 @@
+.About_Img{
+    float: left;
+    margin: 20px 50px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.loram_content{
+    font-size:17px;
+    margin:20px;
+    color:#777;
+}

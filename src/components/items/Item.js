@@ -3,11 +3,12 @@ import { Button, Col } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import ContextApi from "../store/ContextApi";
+import '../Nav/Pages/Product.css'
 
-function Item(props) {
+const Item = (props) => {
   const cartCtx = useContext(ContextApi);
 
-  function onAddToCardHandler() {
+  const onAddToCardHandler = () => {
     cartCtx.addItem({
       id: props.title,
       title: props.title,
@@ -26,8 +27,8 @@ function Item(props) {
           <Card.Title name="title" className="d-flex justify-content-center ">
             {props.title}
           </Card.Title>
-          <Link to="/Store/:Products">
-            <Card.Img variant="top" src={props.imageUrl} />
+          <Link className="img rounded-3" to={`/Store/${props.title}`}>
+            <Card.Img className="imageZoom rounded-3" variant="top" src={props.imageUrl} />
           </Link>
           <Card.Body className="d-flex justify-content-between">
             <Card.Text className="h5">${props.price}</Card.Text>
